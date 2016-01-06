@@ -1,0 +1,23 @@
+{
+    "name": "develpr/phindle",
+	 "license": "MIT",
+	 "type": "library",
+	 "description": "Creates full featured opf/ncx files for Kindle (mobi) ebooks and allows for images and other static resources",
+	 "keywords": ["ebook","kindle", "mobi", "opf", "book", "ncx"],
+	 "homepage": "http://github.com/develpr/phindle",
+    "authors": [
+        {
+            "name": "Kevin Mitchell",
+            "email": "kevin@develpr.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Develpr\\Phindle\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
