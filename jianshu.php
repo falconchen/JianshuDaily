@@ -14,11 +14,11 @@ ignore_user_abort(true);
 
 define("JS_MAX_PAGE", $config["js_max_page"]); //最大页数:1~5
 define("JS_KEEP_IMG", $config['js_keep_img']);// 是否需要图片
-define("JS_IMG_WIDTH",$config['js_img_width']); // 简书图片缩放宽度 px
+define("JS_IMG_WIDTH", $config['js_img_width']); // 简书图片缩放宽度 px
 define("KD_SEND_ZIP", $config['kd_send_zip']); //todo: 是否发送经过zip压缩的电子书
 
 
-$site_url  = 'http://www.jianshu.com';
+$site_url = 'http://www.jianshu.com';
 $curl = new Curl\Curl();
 $curl->setHeader('X-Requested-With', 'XMLHttpRequest');
 $curl->setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:40.0) Gecko/20100101 Firefox/40.0');
@@ -32,7 +32,6 @@ if ($curl->error) {
 }
 $page_content = $curl->response;
 $page_headers = $curl->response_headers;
-
 
 
 $cookie_str = "";
@@ -65,7 +64,7 @@ $curl->setHeader('Accept', 'text/javascript, application/javascript, application
 01');
 
 
-$data_url =  'http://www.jianshu.com/top/daily';
+$data_url = 'http://www.jianshu.com/top/daily';
 $all_html = "";
 for ($page = 0; $page < JS_MAX_PAGE; $page++) {
     $current_page = $page + 1;
@@ -137,7 +136,7 @@ $phindle = new Develpr\Phindle\Phindle(
         "isdn" => "000000000",
         "staticResourcePath" => __DIR__,
         "cover" => './images/cover.jpg',
-        "kindlegenPath" =>$config['kindlegen_path'],
+        "kindlegenPath" => $config['kindlegen_path'],
         "downloadimage" => true
     )
 
@@ -158,17 +157,16 @@ $phindle->process();
 echo $ebook_path = $phindle->getMobiPath();
 
 $mail = new Nette\Mail\Message();
-$mail->setFrom(sprintf('%s <%s>',$config['kd_sender']['from'],$config['kd_sender']['username']))
+$mail->setFrom(sprintf('%s <%s>', $config['kd_sender']['from'], $config['kd_sender']['username']))
     ->setSubject($phindle->getAttribute('title'))
     ->addAttachment($ebook_path);
 
-foreach($config['kd_receiver'] as $receiver ) {
+foreach ($config['kd_receiver'] as $receiver) {
     $mail->addTo($receiver);
 }
 
 $mailer = new Nette\Mail\SmtpMailer($config['kd_sender']);
 $result = $mailer->send($mail);
-var_dump($result);
 
 
 //获取图片本地存储路径
