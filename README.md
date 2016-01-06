@@ -15,8 +15,8 @@
 
 
 ### 目录
-![cover](images/2.jpg)
+![index](images/2.jpg)
 
 
 ### 内容
-![cover](images/3.jpg)
+![content](images/3.jpg)
