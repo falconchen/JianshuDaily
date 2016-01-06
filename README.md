@@ -1,7 +1,7 @@
 # 每日简书(JianshuDaily)
 自动获取每日简书文章，整理成.mobi格式的电子书，带目录和封面,完成后自动发送到kindle设备或你设置的其他邮箱
 
-##食 用方法:
+##使用方法:
 
 0. 安装[kindlegen](https://www.amazon.com/gp/feature.html?docId=1000765211)  (需要翻墙)
 1. 将`config.sample.php`复制成`config.php`,并修改相关的配置项
