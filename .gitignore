@@ -1,2 +1,4 @@
 .DS_Store
 /config.php
+/ebooks/*
+/jianshu.sh

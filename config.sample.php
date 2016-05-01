@@ -14,12 +14,12 @@ $config = array(
     'KD_SEND_ZIP'=>false, //todo: 是否发送经过zip压缩的电子书
     'KD_RECEIVER'=> array('falcon_chen@qq.com','falcon_chen_40@kindle.cn'),// 电子书接收邮箱,可以为kindle或普通邮箱
     'KD_SENDER'=>array( //stmp发信邮箱
-        'from'=>'每日简书',
-        'host' => 'smtp.example.com',
-        'username' => 'hello@example.com',
-        'password' => 'yourpassword',
+        'from'=>'每日简书-cellmean.com',
+        'host' => '',// smtp host
+        'username' => '',// sender username
+        'password' => '',// sender password
         'secure' => 'ssl',//是否ssl,不使用时请留空
         'smtp_port' => 465,//端口,ssl一般为465,非ssl为25
     ),
-    'kindlegen_path'=> "/Users/falcon/Downloads/KindleGen_Mac_i386_v2_9/kindlegen",//kindlegen所在路径
+    'KINDLEGEN_PATH'=> "/usr/local/kindlegen_dir/kindlegen",//kindlegen所在路径
 );

@@ -12,10 +12,10 @@ date_default_timezone_set("Asia/Shanghai");
 set_time_limit(0);
 ignore_user_abort(true);
 
-define("JS_MAX_PAGE", $config["js_max_page"]); //最大页数:1~5
-define("JS_KEEP_IMG", $config['js_keep_img']);// 是否需要图片
-define("JS_IMG_WIDTH", $config['js_img_width']); // 简书图片缩放宽度 px
-define("KD_SEND_ZIP", $config['kd_send_zip']); //todo: 是否发送经过zip压缩的电子书
+define("JS_MAX_PAGE", $config["JS_MAX_PAGE"]); //最大页数:1~5
+define("JS_KEEP_IMG", $config['JS_KEEP_IMG']);// 是否需要图片
+define("JS_IMG_WIDTH", $config['JS_IMG_WIDTH']); // 简书图片缩放宽度 px
+define("KD_SEND_ZIP", $config['KD_SEND_ZIP']); //todo: 是否发送经过zip压缩的电子书
 
 
 $site_url = 'http://www.jianshu.com';
@@ -136,7 +136,7 @@ $phindle = new Develpr\Phindle\Phindle(
         "isdn" => "000000000",
         "staticResourcePath" => __DIR__,
         "cover" => './images/cover.jpg',
-        "kindlegenPath" => $config['kindlegen_path'],
+        "kindlegenPath" => $config['KINDLEGEN_PATH'],
         "downloadimage" => true
     )
 
@@ -157,7 +157,7 @@ $phindle->process();
 echo $ebook_path = $phindle->getMobiPath();
 
 $mail = new Nette\Mail\Message();
-$mail->setFrom(sprintf('%s <%s>', $config['kd_sender']['from'], $config['kd_sender']['username']))
+$mail->setFrom(sprintf('%s <%s>', $config['KD_SENDER']['from'], $config['KD_SENDER']['username']))
     ->setSubject($phindle->getAttribute('title'))
     ->addAttachment($ebook_path);
 
@@ -165,7 +165,7 @@ foreach ($config['kd_receiver'] as $receiver) {
     $mail->addTo($receiver);
 }
 
-$mailer = new Nette\Mail\SmtpMailer($config['kd_sender']);
+$mailer = new Nette\Mail\SmtpMailer($config['KD_SENDER']);
 $result = $mailer->send($mail);
 
 
