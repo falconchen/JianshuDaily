@@ -2,3 +2,5 @@
 /config.php
 /ebooks/*
 /jianshu.sh
+*.swp
+

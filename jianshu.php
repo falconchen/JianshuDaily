@@ -154,14 +154,14 @@ foreach ($article_arr as $i => $article) {
 }
 
 $phindle->process();
-echo $ebook_path = $phindle->getMobiPath();
+$ebook_path = $phindle->getMobiPath();
 
 $mail = new Nette\Mail\Message();
 $mail->setFrom(sprintf('%s <%s>', $config['KD_SENDER']['from'], $config['KD_SENDER']['username']))
     ->setSubject($phindle->getAttribute('title'))
-    ->addAttachment($ebook_path);
+    ->addAttachment($ebook_path, null, 'application/octet-stream');
 
-foreach ($config['kd_receiver'] as $receiver) {
+foreach ($config['KD_RECEIVER'] as $receiver) {
     $mail->addTo($receiver);
 }
 
